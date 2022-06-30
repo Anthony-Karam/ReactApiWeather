@@ -2,7 +2,7 @@ import "./App.css";
 import SearchCityComponent from "./components/SearchCityComponent";
 import NameAndDateComponent from "./components/NameAndDateComponent";
 import DegreeTempComponent from "./components/DegreeTempComponent";
-import fakeWeather from "./fakeWeather.json";
+// import fakeWeather from "./fakeWeather.json";
 import React from "react";
 
 class App extends React.Component {
@@ -10,9 +10,20 @@ class App extends React.Component {
     super(props);
     this.state = { weather: null };
   }
+  handleCountryChange = async (country) => {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${country}&cnt=8&appid=ad31fe76ffa44e4d13b1f2ab08969dc8`
+    );
+    const result = await response.json();
+    this.setState({ weather: result });
+  };
 
-  componentDidMount() {
-    this.setState({ weather: fakeWeather });
+  async componentDidMount() {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=Beirut&cnt=8&appid=ad31fe76ffa44e4d13b1f2ab08969dc8`
+    );
+    const result = await response.json();
+    this.setState({ weather: result });
   }
   render() {
     // console.log(
@@ -22,7 +33,9 @@ class App extends React.Component {
       <div className="App">
         <div class="app-wrap">
           <header>
-            <SearchCityComponent />
+            <SearchCityComponent
+              handleCountryChange={this.handleCountryChange}
+            />
           </header>
           <main>
             {this.state.weather && (

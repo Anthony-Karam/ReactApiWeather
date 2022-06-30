@@ -85,3 +85,18 @@ main {
   font-weight: 500;
   text-shadow: 0 3px rgba(0, 0, 0, 0.4);
 }
+button {
+  cursor: pointer;
+  width: 50%;
+  max-width: 280px;
+  padding: 10px 15px;
+  border: none;
+  /* outline: none; */
+  background-color: rgba(18, 18, 18, 0.4);
+  border-radius: 16px;
+  border-bottom: 3px solid #df8e00;
+  font-size: 13px;
+  font-weight: 300;
+  transition: 0.2s ease-out;
+  color: #eeeeee;
+}
