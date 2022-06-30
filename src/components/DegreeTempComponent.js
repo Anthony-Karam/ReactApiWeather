@@ -1,14 +1,14 @@
 import React from "react";
 
-const DegreeTempComponent = () => {
+const DegreeTempComponent = (props) => {
   return (
     <div>
       <div className="current">
-        <div className="temp">
-          15<span>°C</span>
+        <div className="temp">{props.temp}'C</div>
+        <div className="weather">{props.weather}</div>
+        <div className="hi-low">
+          {`${props.lowTemp} low to ${props.highTemp} high`}
         </div>
-        <div className="weather">Sunny</div>
-        <div className="hi-low">13°C / 16°C</div>
       </div>
     </div>
   );
